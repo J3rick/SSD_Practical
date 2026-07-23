@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+</head>
+<body>
+  <h1>Search</h1>
+  <p id="error" style="color:red;"></p>
+
+  <form id="searchForm" action="/search" method="POST" onsubmit="return handleSubmit(event)">
+    <input type="text" id="q" name="q" minlength="3" maxlength="50" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="/validate.js"></script>
+  <script>
+    function handleSubmit(e) {
+      var input = document.getElementById('q');
+      var result = validateSearchTerm(input.value);
+      if (!result.valid) {
+        e.preventDefault();
+        document.getElementById('error').textContent = result.message;
+        input.value = ''; // clear input, remain on home page
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
