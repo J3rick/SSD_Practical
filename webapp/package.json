@@ -2,8 +2,16 @@
   "name": "webapp",
   "version": "1.0.0",
   "main": "server.js",
+  "scripts": {
+    "test:integration": "mocha tests/integration.test.js --timeout 10000",
+    "test:ui": "mocha tests/ui.test.js --timeout 30000"
+  },
   "dependencies": {
     "express": "^4.19.2",
     "mysql2": "^3.9.7"
+  },
+  "devDependencies": {
+    "mocha": "^10.4.0",
+    "selenium-webdriver": "^4.21.0"
   }
 }
